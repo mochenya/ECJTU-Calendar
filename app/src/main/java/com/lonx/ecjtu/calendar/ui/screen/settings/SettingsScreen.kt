@@ -524,6 +524,21 @@ fun SettingsScreen(
                         }
                     )
                     SuperArrow(
+                        title = "开发者",
+                        summary = "MoChenYa",
+                        onClick = {
+                            openUrl(context, "https://github.com/mochenya/")
+                        },
+                        startAction = {
+                            Icon(
+                                modifier = Modifier.padding(end = 16.dp),
+                                imageVector = MiuixIcons.Regular.ContactsCircle,
+                                contentDescription = "开发者",
+                                tint = colorScheme.onBackground
+                            )
+                        }
+                    )
+                    SuperArrow(
                         title = "Github",
                         summary = "项目地址",
                         onClick = {
