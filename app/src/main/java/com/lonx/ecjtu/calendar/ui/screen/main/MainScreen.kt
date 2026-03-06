@@ -48,6 +48,7 @@ import top.yukonga.miuix.kmp.basic.ListPopupColumn
 import top.yukonga.miuix.kmp.basic.ListPopupDefaults
 import top.yukonga.miuix.kmp.basic.MiuixScrollBehavior
 import top.yukonga.miuix.kmp.basic.NavigationBar
+import top.yukonga.miuix.kmp.basic.NavigationBarItem
 import top.yukonga.miuix.kmp.basic.NavigationItem
 import top.yukonga.miuix.kmp.basic.PopupPositionProvider
 import top.yukonga.miuix.kmp.basic.Scaffold
@@ -223,11 +224,16 @@ fun MainScreen(
                 )
             },
             bottomBar = {
-                NavigationBar(
-                    items = routes,
-                    selected = pagerState.currentPage,
-                    onClick = { index -> handlePageChange.invoke(index) }
-                )
+                NavigationBar {
+                    routes.forEachIndexed { index, item ->
+                        NavigationBarItem(
+                            selected = pagerState.currentPage == index,
+                            onClick = { handlePageChange.invoke(index) },
+                            icon = item.icon,
+                            label = item.label
+                        )
+                    }
+                }
             }
         ) { paddingValues ->
             HorizontalPager(
